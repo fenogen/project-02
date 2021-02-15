@@ -1,0 +1,461 @@
+// ----------------------------------------------MIXIN
+@mixin for-form($range) {
+  $mobile: 320px;
+  $tablet: 768px;
+  $desktop: 1280px;
+  // $mobile: 290px;
+  // $tablet: 724px;
+  // $desktop: 950px;
+
+  @if $range == mobile-only {
+    @media (max-width: #{$tablet - 1}) {
+      @content;
+    }
+  } @else if $range == mobile {
+    @media (min-width: $mobile) {
+      @content;
+    }
+  } @else if $range == tablet-only {
+    @media (max-width: #{$desktop - 1}) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  } @else if $range == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+// ----------------------------------------------Container
+.form {
+  background: #ffffff;
+
+  position: relative;
+  @include for-form(mobile) {
+    // width: 290px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 54px;
+    padding-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include for-form(tablet) {
+    width: 724px;
+    padding-left: 54px;
+    padding-right: 54px;
+    padding-top: 54px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include for-form(desktop) {
+    width: 950px;
+    padding-left: 57px;
+    padding-right: 57px;
+    padding-top: 54px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.button-close {
+  width: 24px;
+  height: 24px;
+  margin: 0px;
+  padding: 0px;
+  border-width: 0px;
+
+  position: absolute;
+
+  @include for-form(mobile) {
+    top: 15px;
+    right: 15px;
+  }
+
+  @include for-form(tablet) {
+    top: 25px;
+    right: 25px;
+  }
+
+  @include for-form(desktop) {
+    top: 25px;
+    right: 20px;
+  }
+}
+
+// ----------------------------------------------Form
+
+.form__title {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+
+  @include for-form(mobile) {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  @include for-form(tablet) {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}
+
+.form__list {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form__item {
+  display: flex;
+  justify-content: space-between;
+  position: relative; //для раздела фото
+}
+
+.form__label {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  @include for-form(mobile) {
+    position: absolute;
+    margin-top: 8px;
+  }
+
+  @include for-form(tablet) {
+    position: static;
+    margin-top: 35px;
+  }
+}
+
+.form__input {
+  // border: 1px solid #bbbbbb;
+
+  padding-left: 23px;
+
+  @include for-form(mobile) {
+    width: 100%;
+    height: 52px;
+    margin-top: 35px;
+    margin-bottom: 10px;
+  }
+
+  @include for-form(tablet) {
+    width: 460px;
+    height: 58px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  @include for-form(desktop) {
+    width: 500px;
+    width: 610px;
+    height: 58px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+// ----------------------------------------------Select category
+
+.form__input.select {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.select__option {
+  width: 100px;
+}
+
+textarea {
+  resize: vertical;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+// ----------------------------------------------Download
+
+.form__input-download {
+  display: flex;
+  width: 610px;
+
+  @include for-form(mobile) {
+    flex-wrap: wrap;
+  }
+
+  @include for-form(tablet) {
+    width: 460px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  @include for-form(desktop) {
+    width: 610px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+.download__item {
+  margin-left: 8px;
+  position: relative;
+  background-color: #f5f6fb;
+  @include for-form(mobile) {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 78px;
+    height: 46px;
+  }
+
+  @include for-form(tablet) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    width: 84px;
+    height: 50px;
+  }
+
+  @include for-form(desktop) {
+    margin-left: 10px;
+    width: 78px;
+    height: 50px;
+  }
+}
+.download__item:nth-child(-n + 3) {
+  @include for-form(mobile) {
+    margin-top: 45px;
+  }
+  @include for-form(tablet) {
+    margin-top: 0px;
+  }
+}
+
+.download__item:nth-child(1) {
+  margin-left: 0px;
+}
+
+.download__item:nth-child(4) {
+  @include for-form(mobile) {
+    margin-left: 0px;
+  }
+  @include for-form(tablet) {
+    margin-left: 10px;
+  }
+}
+
+/*.download__item:nth-child(1),
+.download__item:nth-child(4) {
+  @include for-form(mobile) {
+    margin-left: 0px;
+  }
+  @include for-form(tablet) {
+    margin-left: 0px;
+  }
+}*/
+.download__item:nth-child(3),
+.download__item:nth-child(6) {
+  @include for-form(mobile) {
+    margin-right: 0px;
+  }
+  @include for-form(tablet) {
+    margin-left: 10px;
+  }
+}
+
+.form__label-text {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  @include for-form(mobile) {
+    position: absolute;
+    margin-top: 18px;
+  }
+
+  @include for-form(tablet) {
+    position: static;
+    margin-top: 35px;
+  }
+}
+
+.download__label {
+  @include for-form(mobile) {
+    width: 78px;
+    height: 46px;
+  }
+
+  @include for-form(tablet) {
+    width: 84px;
+    height: 50px;
+  }
+
+  @include for-form(desktop) {
+    width: 78px;
+    height: 50px;
+  }
+}
+
+.download__img {
+  @include for-form(mobile) {
+    width: 78px;
+    height: 46px;
+  }
+
+  @include for-form(tablet) {
+    width: 84px;
+    height: 50px;
+  }
+
+  @include for-form(desktop) {
+    object-fit: contain;
+    width: 78px;
+    height: 50px;
+  }
+}
+
+// ----------------------------------------------Delete and Submit
+
+.form__item-delete {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #ffffff !important;
+  color: #ff6b09;
+}
+
+.form__item-submit {
+  display: flex;
+  @include for-form(mobile-only) {
+    justify-content: center;
+  }
+  justify-content: flex-end;
+}
+
+.button-delete__span {
+  padding: 0px;
+  margin-right: 8px;
+}
+
+.button-delete__icon {
+  object-fit: cover;
+  vertical-align: text-bottom;
+}
+
+.button-delete {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+
+  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+
+  border-width: 0px;
+  color: #000000;
+  background-color: #ffffff;
+
+  @include for-form(tablet) {
+    margin-left: 158px;
+  }
+
+  @include for-form(desktop) {
+    margin-left: 227px;
+    margin-bottom: 10px;
+  }
+}
+
+.button-submit {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+
+  padding: 0px;
+  margin-top: 30px;
+
+  border-width: 0px;
+  background: #ff6b09;
+  color: #ffffff;
+
+  @include for-form(mobile) {
+    font-size: 12px;
+    line-height: 14px;
+    width: 250px;
+    height: 50px;
+  }
+
+  @include for-form(tablet) {
+    font-size: 14px;
+    line-height: 17px;
+    width: 266px;
+    height: 60px;
+    margin-right: 194px;
+  }
+
+  @include for-form(desktop) {
+    width: 286px;
+    height: 60px;
+    margin-right: 324px;
+  }
+}
+
+// ----------------------------------------------Стили для загрузки
+.download__img {
+  position: relative;
+  background-image: url(./images/+.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+.close-image-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #fff;
+}
+
+.close-image-button :focus,
+.close-image-button :hover {
+  fill: orange;
+  cursor: pointer;
+}
+.item-close-button {
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
