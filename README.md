@@ -7,4 +7,4 @@ Shop OLX - Website
 
 - Backend: https://callboard-backend.goit.global/api-docs/#/
 
-- Project.: https://frosty-northcutt-71d223.netlify.app/
+- Project: https://frosty-northcutt-71d223.netlify.app/
